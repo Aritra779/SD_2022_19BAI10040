@@ -1,5 +1,3 @@
-import typer
-from . import sanitize
 from . import display as disp
 from . import runGame
 

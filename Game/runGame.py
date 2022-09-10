@@ -15,7 +15,9 @@ def runGame(board):
     state[0] = boardA
     state[1] = boardB
 
-    pieces = [{'P1','P2','P3','P4','P5'},{'P1','P2','P3','P4','P5'}]
+    piecesA = set([(piece.split('-'))[1] for piece in board[4]])
+    piecesB = set([(piece.split('-'))[1] for piece in board[0]])
+    pieces = [piecesA, piecesB]
     pos = []
     player = 0 # 0 -> A, 1 -> B
     while len(pieces[0]) > 0 or len(pieces[1]) > 0:
