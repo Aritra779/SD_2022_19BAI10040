@@ -10,9 +10,7 @@ def main():
     playerB = typer.prompt("\n\nFor Player B.\nEnter the pieces positioned from left to right(separated by a space)\nSample:P1 P3 P4 P2 P5\nEnter your pieces position")
     playerB = initialSanitize(playerB)
 
-
     initiateGame(playerA, playerB)
-    
     
 
 if __name__ == "__main__":
