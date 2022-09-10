@@ -1,0 +1,1 @@
+proper versioning isn't implemented yet. When it'll done all the version changelog will be updated here
