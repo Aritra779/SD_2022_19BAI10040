@@ -1,6 +1,4 @@
-
-
-from . import state
+from .. import board
 
 def displayBoard():
     print('\nCurrent board configuration:\n')
@@ -13,8 +11,8 @@ def displayBoard():
     for i in range(5):
         print("|", end = " ")
         for j in range(5):
-            print(state[0][i][j].center(4), end = " | ")
+            print(board[i][j].center(4), end = " | ")
         print("\t\t\t|", end = " ")
         for j in range(5):
-            print(state[1][i][j].center(4), end = " | ")
+            print(board[4 - i][4 - j].center(4), end = " | ")
         print()

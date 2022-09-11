@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "Chess"
+version = "0.1.0"
+description = "This is a CLI based chess like game."
+authors = ["Aritra Dutta <aritra.dutta.366@gmail.com>"]
+readme = "README.md"
+keywords = ["CLI tool", "Chess", "Game"]
+repository = "https://github.com/Aritra779/SD_19BAI10040"
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = "^0.6.1"
+
+[tool.poetry.scripts]
+chess = 'Chess.chess:run'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

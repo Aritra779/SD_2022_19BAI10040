@@ -1,6 +1,5 @@
 import typer
-valid_type = {'P','H1', 'H2', 'H3'}
-valid_pos = {1,2,3,4,5}
+valid_type = {'P1','P2','P3','P4','P5','H1', 'H2', 'H3'}
 valid_moves = {'L','R', 'F','B'}
 
 def initialSanitize(player):
@@ -12,35 +11,28 @@ def initialSanitize(player):
             positionList = typer.prompt("\nEnter the pieces positioned from left to right(separated by a space)\nSample:P1 P3 P4 P2 P5\nEnter your pieces position")
             continue
 
-        positions = positionList.split()
+        pieceTypes = positionList.split()
         
+        used_position = False
+        entered_piece = set()
         invalid_piece = False
-        for pos in positions:
-            if not invalid_piece and pos[0] not in valid_type:
+
+        for psTyp in pieceTypes:
+            if psTyp in entered_piece:
+                used_position = True
+                break
+            entered_piece.add(psTyp)
+            if not invalid_piece and psTyp not in valid_type:
                 invalid_piece = True
                 break
-        if invalid_piece:
-            print("Invalid type of piece. Allowed: P H1 H2 H3")
+
+        if used_position:
+            print("You placed two same pieces. Try again.")
             positionList = typer.prompt("\nEnter the pieces positioned from left to right(separated by a space)\nSample:P1 P3 P4 P2 P5\nEnter your pieces position")
             continue
 
-        invalid_piece = False
-        used_position = False
-        entered_pos = set()
-        for pos in positions:
-            if pos[1] in entered_pos:
-                used_position = True
-                break
-            entered_pos.add(pos[1])
-            if not invalid_piece and (int(pos[1]) not in valid_pos):
-                invalid_piece = True
-                break
-        if used_position:
-            print("Can't have two pieces in the same position.")
-            positionList = typer.prompt("\nEnter the pieces positioned from left to right(separated by a space)\nSample:P1 P3 P4 P2 P5\nEnter your pieces position")
-            continue
         if invalid_piece:
-            print("Invalid position. Allowed: 1 2 3 4 5")
+            print("Invalid type of piece. Allowed: P H1 H2 H3")
             positionList = typer.prompt("\nEnter the pieces positioned from left to right(separated by a space)\nSample:P1 P3 P4 P2 P5\nEnter your pieces position")
             continue
 
@@ -58,13 +50,8 @@ def sanitizeMove(turn):
             continue
 
         turnLst = turnList.split()
-        if turnLst[0][0] not in valid_type:
+        if turnLst[0] not in valid_type:
             print("Invalid type of piece. Allowed: P H1 H2 H3")
-            turnList = typer.prompt("Enter a valid piece followd by a valid move like P1 L")
-            continue
-
-        if (int(turnLst[0][1]) not in valid_pos):
-            print("Invalid position. Allowed: 1 2 3 4 5")
             turnList = typer.prompt("Enter a valid piece followd by a valid move like P1 L")
             continue
         
