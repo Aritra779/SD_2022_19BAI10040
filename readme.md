@@ -22,8 +22,18 @@ inside of the folder where the project lies
 
 *invalid moves are checked (and sanitized) first before proceeding with the core task.*
 
+# sneak peek
+
+![initial Game][initialize_ss]
+![during Game][rungame_ss]
+![validity Check][validity_ss]
 # Roadmap
 
 - [ ] More pieces type
 - [ ] Move moves type
 - [ ] testing 
+
+
+[initialize_ss]: images/initialScreen.png
+[rungame_ss]: images/rungame.png
+[validity_ss]: images/validityCheck.png
