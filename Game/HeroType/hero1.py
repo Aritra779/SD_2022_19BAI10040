@@ -1,2 +1,2 @@
-def hero1Moves():
+def hero1Moves(turn, player):
     pass
