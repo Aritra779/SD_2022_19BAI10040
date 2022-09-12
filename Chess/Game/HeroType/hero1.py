@@ -1,4 +1,4 @@
-from Chess.Game.validate import validateH1Moves
+from Chess.Game.validate import validateH1Move
 from ... import positions,pieces,board
 
 def hero1Moves(turn, player):
@@ -8,10 +8,10 @@ def hero1Moves(turn, player):
     row, col = pos
     adjustment = 2 if player == 1 else 0
 
-    if not validateH1Moves(move, piece, player):
+    if not validateH1Move(move, piece, player):
         return False
 
-    match(move):
+    match(move.upper()):
         case 'L':  
             board[row][col] = '-'
             prevPiece1 = board[row][col - 1 + adjustment]
@@ -63,7 +63,7 @@ def hero1Moves(turn, player):
         case'B':
             board[row][col] = '-'
             prevPiece1 = board[row + 1 - adjustment][col]
-            prevPiece2 = board[row + 1 - (2 * adjustment)][col]
+            prevPiece2 = board[row + 2 - (2 * adjustment)][col]
             if prevPiece1 != '-':
                 board[row + 1 - adjustment][col] = '-'
                 pieces[1 - player].remove((prevPiece1.split('-'))[1])

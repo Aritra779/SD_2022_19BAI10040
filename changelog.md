@@ -1,4 +1,22 @@
+<!-- markdownlint-disable MD024 -->
+
 # CHANGELOG
+
+## v0.2.0
+
+### Added
+
+* Piece Type - `H2`
+* Move Types - `LF`, `FL`, `FR`, `RF`, `LB`, `BL`, `RB`, `BR` for piece type `H2`
+
+### Changed
+
+* small changes in names of certain fucntions to make names uniform throughout the project
+* Names and move types are now case insensitive i.e. `P1` and `p1` both will work.
+
+### Removed
+
+* Nothing :)
 
 ## v0.1.0
 
@@ -18,6 +36,7 @@
 * Fixed typos
 
 ### Removed
+
 * Nothing. ;)
 
 ## Pre versioning

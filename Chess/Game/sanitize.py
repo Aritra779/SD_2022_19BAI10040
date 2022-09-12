@@ -1,6 +1,9 @@
 import typer
 valid_type = {'P1','P2','P3','P4','P5','H1', 'H2', 'H3'}
-valid_moves = {'L','R', 'F','B'}
+valid_moves = {
+  **dict.fromkeys(['P', 'H1'], {'L','R', 'F','B'}), 
+  **dict.fromkeys(['H2','H3'], {'LF','FL','RF','FR','LB','BL','RB','BR'})
+}
 
 def initialSanitize(player):
     positionList = player
@@ -22,7 +25,7 @@ def initialSanitize(player):
                 used_position = True
                 break
             entered_piece.add(psTyp)
-            if not invalid_piece and psTyp not in valid_type:
+            if not invalid_piece and psTyp.upper() not in valid_type:
                 invalid_piece = True
                 break
 
@@ -40,9 +43,13 @@ def initialSanitize(player):
         flagged = False
     return positionList.split()
 
+
+
+
 def sanitizeMove(turn):
     turnList = turn
     flagged = True
+
     while flagged:
         if len(turnList.split()) != 2:
             print("Please mention a piece followed by a direction separated by a space")
@@ -50,15 +57,28 @@ def sanitizeMove(turn):
             continue
 
         turnLst = turnList.split()
-        if turnLst[0] not in valid_type:
+        if turnLst[0].upper() not in valid_type:
             print("Invalid type of piece. Allowed: P H1 H2 H3")
             turnList = typer.prompt("Enter a valid piece followd by a valid move like P1 L")
             continue
-        
-        if turnLst[1] not in valid_moves:
-            print("Invalid move. Allowed : L R F B")
-            turnList = typer.prompt("Enter a valid piece followd by a valid move like P1 L")
-            continue
+
+        if (turnLst[0].upper()).startswith('P'):
+            if turnLst[1] not in valid_moves['P']:
+                print("Invalid move for coresponding piece type. Allowed Moves: L R F B")
+                turnList = typer.prompt("Enter a valid piece followd by a valid move like P1 L")
+                continue
+
+        elif turnLst[0].upper() == 'H1':
+            if turnLst[1] not in valid_moves['H1']:
+                print("Invalid move for coresponding piece type. Allowed : L R F B")
+                turnList = typer.prompt("Enter a valid piece followd by a valid move like H1 L")
+                continue
+
+        else:
+            if turnLst[1] not in valid_moves[turnLst[0]]:
+                print("Invalid move for coresponding piece type. Allowed : LF FL RF FR LB BL RB BR")
+                turnList = typer.prompt("Enter a valid piece followd by a valid move like H2 LB")
+                continue
 
         flagged = False
 

@@ -18,23 +18,23 @@ def runGame():
         turn = typer.prompt("Enter a valid piece followed by a valid move like P1 L")
         turn = sanitizeMove(turn)
         piece = (turn.split())[0]
-        if piece not in pieces[player]:
+        if piece.upper() not in pieces[player]:
             print("Invalid move. Piece not present on the board.")
             continue
         
-        if piece.startswith('P'):
+        if piece.upper().startswith('P'):
             if not pawnMoves(turn, player):
                 continue
 
-        elif piece == 'H1':
+        elif piece.upper() == 'H1':
             if not hero1Moves(turn, player):
                 continue
 
-        elif piece == 'H2':
+        elif piece.upper() == 'H2':
             if not hero2Moves(turn, player):
                 continue
 
-        elif piece == 'H3':
+        elif piece.upper() == 'H3':
             if not hero3Moves(turn, player):
                 continue
 

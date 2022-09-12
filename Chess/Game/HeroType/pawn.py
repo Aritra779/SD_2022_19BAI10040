@@ -11,7 +11,7 @@ def pawnMoves(turn, player):
     if not validatePawnMove(move, piece, player):
         return False
 
-    match(move):
+    match(move.upper()):
         case 'L':  
             board[row][col] = '-'
             prevPiece = board[row][col - 1 + adjustment]
