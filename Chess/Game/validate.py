@@ -1,8 +1,9 @@
+
 from .. import board, positions
 
-def validatePawnMove(move, piece, player):
-    pos = positions[piece]
-    row, col = pos
+def validatePawnMove(move : str, piece : str, player : int) -> bool:
+    pos : list[int] = positions[piece]
+    row , col = pos
     adjustment1 = 4 if player == 0 else 0
     adjustment2 = 2 if player == 1 else 0
 
@@ -27,52 +28,52 @@ def validatePawnMove(move, piece, player):
 
 
 
-def validateH1Move(move, piece, player):
-    pos = positions[piece]
+def validateH1Move(move : str, piece : str, player : int) -> bool:
+    pos : list[int] = positions[piece]
     row, col = pos
     adjustment = 2 if player == 1 else 0
 
-    match(move):
-        case 'L' | 'l':
+    match(move.upper()):
+        case 'L':
             if (player == 0 and col < 2) or (player == 1 and col > 2):
                 print("Out of bound move.")
                 return False
-            prev1Type = board[row][col - 1 + adjustment].split('-')[0]
-            prev2Type = board[row][col - 2 + (2 * adjustment)].split('-')[0]
-            pieceTeam = piece.split('-')[0]
+            prev1Type : str = board[row][col - 1 + adjustment].split('-')[0]
+            prev2Type : str = board[row][col - 2 + (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
             if prev1Type == pieceTeam or prev2Type == pieceTeam:
                 print("Can't attack friendly piece. Betrayal!! We don't do that here.")
                 return False
         
-        case 'R' | 'r':
+        case 'R':
             if (player == 0 and col > 2) or (player == 1 and col < 2):
                 print("Out of bound move.")
                 return False
-            prev1Type = board[row][col + 1 - adjustment].split('-')[0]
-            prev2Type = board[row][col + 2 - (2 * adjustment)].split('-')[0]
-            pieceTeam = piece.split('-')[0]
+            prev1Type : str = board[row][col + 1 - adjustment].split('-')[0]
+            prev2Type : str = board[row][col + 2 - (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
             if prev1Type == pieceTeam or prev2Type == pieceTeam:
                 print("Can't attack friendly piece. Betrayal!! We don't do that here.")
                 return False
 
-        case 'F' | 'f':
+        case 'F':
             if (player == 0 and row < 2) or (player == 1 and row > 2):
                 print("Out of bound move")
                 return False
-            prev1Type = board[row - 1 + adjustment][col].split('-')[0]
-            prev2Type = board[row - 2 + (2 * adjustment)][col].split('-')[0]
-            pieceTeam = piece.split('-')[0]
+            prev1Type : str = board[row - 1 + adjustment][col].split('-')[0]
+            prev2Type : str = board[row - 2 + (2 * adjustment)][col].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
             if prev1Type == pieceTeam or prev2Type == pieceTeam:
                 print("Can't attack friendly piece. Betrayal!! We don't do that here.")
                 return False
         
-        case 'B' | 'b':
+        case 'B':
             if (player == 0 and row > 2) or (player == 1 and row < 2):
                 print("Out of bound move")
                 return False
-            prev1Type = board[row + 1 - adjustment][col].split('-')[0]
-            prev2Type = board[row + 2 - (2 * adjustment)][col].split('-')[0]
-            pieceTeam = piece.split('-')[0]
+            prev1Type : str = board[row + 1 - adjustment][col].split('-')[0]
+            prev2Type : str = board[row + 2 - (2 * adjustment)][col].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
             if prev1Type == pieceTeam or prev2Type == pieceTeam:
                 print("Can't attack friendly piece. Betrayal!! We don't do that here.")
                 return False
@@ -82,8 +83,8 @@ def validateH1Move(move, piece, player):
 
 
 
-def validateH2Move(move, piece, player):
-    pos = positions[piece]
+def validateH2Move(move : str, piece : str, player : int) -> bool:
+    pos : list[int] = positions[piece]
     row, col = pos
     adjustment = 2 if player == 1 else 0
 
@@ -92,9 +93,9 @@ def validateH2Move(move, piece, player):
             if (player == 0 and (col < 2 or row < 2)) or (player == 1 and (col > 2 or row > 2)):
                 print("Out of bound move.")
                 return False
-            prev1Type = board[row - 1 + adjustment][col - 1 + adjustment].split('-')[0]
-            prev2Type = board[row - 2 + (2 * adjustment)][col - 2 + (2 * adjustment)].split('-')[0]
-            pieceTeam = piece.split('-')[0]
+            prev1Type : str = board[row - 1 + adjustment][col - 1 + adjustment].split('-')[0]
+            prev2Type : str = board[row - 2 + (2 * adjustment)][col - 2 + (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
             if prev1Type == pieceTeam or prev2Type == pieceTeam:
                 print("Can't attack friendly piece. Betrayal!! We don't do that here.")
                 return False
@@ -103,9 +104,9 @@ def validateH2Move(move, piece, player):
             if (player == 0 and (col > 2 or row < 2)) or (player == 1 and (col < 2 or row > 2)):
                 print("Out of bound move.")
                 return False
-            prev1Type = board[row - 1 + adjustment][col + 1 - adjustment].split('-')[0]
-            prev2Type = board[row - 2 + (2 * adjustment)][col + 2 - (2 * adjustment)].split('-')[0]
-            pieceTeam = piece.split('-')[0]
+            prev1Type : str = board[row - 1 + adjustment][col + 1 - adjustment].split('-')[0]
+            prev2Type : str = board[row - 2 + (2 * adjustment)][col + 2 - (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
             if prev1Type == pieceTeam or prev2Type == pieceTeam:
                 print("Can't attack friendly piece. Betrayal!! We don't do that here.")
                 return False
@@ -114,9 +115,9 @@ def validateH2Move(move, piece, player):
             if (player == 0 and (col < 2 or row > 2)) or (player == 1 and (col > 2 or row < 2)):
                 print("Out of bound move")
                 return False
-            prev1Type = board[row + 1 - adjustment][col - 1 + adjustment].split('-')[0]
-            prev2Type = board[row + 2 - (2 * adjustment)][col - 2 + (2 * adjustment)].split('-')[0]
-            pieceTeam = piece.split('-')[0]
+            prev1Type : str = board[row + 1 - adjustment][col - 1 + adjustment].split('-')[0]
+            prev2Type : str = board[row + 2 - (2 * adjustment)][col - 2 + (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
             if prev1Type == pieceTeam or prev2Type == pieceTeam:
                 print("Can't attack friendly piece. Betrayal!! We don't do that here.")
                 return False
@@ -125,10 +126,101 @@ def validateH2Move(move, piece, player):
             if (player == 0 and (col > 2 or row > 2)) or (player == 1 and (col < 2 or row < 2)):
                 print("Out of bound move")
                 return False
-            prev1Type = board[row + 1 - adjustment][col + 1 - adjustment].split('-')[0]
-            prev2Type = board[row + 2 - (2 * adjustment)][col + 2 - (2 * adjustment)].split('-')[0]
-            pieceTeam = piece.split('-')[0]
+            prev1Type : str = board[row + 1 - adjustment][col + 1 - adjustment].split('-')[0]
+            prev2Type : str = board[row + 2 - (2 * adjustment)][col + 2 - (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
             if prev1Type == pieceTeam or prev2Type == pieceTeam:
+                print("Can't attack friendly piece. Betrayal!! We don't do that here.")
+                return False
+
+    return True
+
+
+
+
+def validateH3Move(move : str, piece : str , player : int) -> bool:
+    pos : list[int]= positions[piece]
+    row, col = pos
+    adjustment = 2 if player == 1 else 0
+
+    match(move.upper()):
+        case 'LF':
+            if (player == 0 and (col < 2 or row == 0)) or (player == 1 and (col > 2 or row == 4)):
+                print("Out of bound move.")
+                return False
+            prevType : str = board[row - 1 + adjustment][col - 2 + (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
+            if prevType == pieceTeam:
+                print("Can't attack friendly piece. Betrayal!! We don't do that here.")
+                return False
+
+        case 'FL':
+            if (player == 0 and (col == 0 or row < 2)) or (player == 1 and (col == 4 or row > 2)):
+                print("Out of bound move.")
+                return False
+            prevType : str = board[row - 2 + (2 * adjustment)][col - 1 + adjustment].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
+            if prevType == pieceTeam:
+                print("Can't attack friendly piece. Betrayal!! We don't do that here.")
+                return False
+
+        case 'RF':
+            if (player == 0 and (col > 2 or row == 0)) or (player == 1 and (col < 2 or row == 4)):
+                print("Out of bound move.")
+                return False
+            prevType : str = board[row - 1 +  adjustment][col + 2 - (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
+            if prevType == pieceTeam:
+                print("Can't attack friendly piece. Betrayal!! We don't do that here.")
+                return False
+
+        case 'FR':
+            if (player == 0 and (col == 4 or row < 2)) or (player == 1 and (col == 0 or row > 2)):
+                print("Out of bound move.")
+                return False
+            prevType : str = board[row - 2 + (2 * adjustment)][col + 1 - adjustment].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
+            if prevType == pieceTeam:
+                print("Can't attack friendly piece. Betrayal!! We don't do that here.")
+                return False
+
+        case 'LB':
+            if (player == 0 and (col < 2 or row == 4)) or (player == 1 and (col > 2 or row == 0)):
+                print("Out of bound move")
+                return False
+            prevType : str = board[row + 1 - adjustment][col - 2 + (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
+            if prevType == pieceTeam:
+                print("Can't attack friendly piece. Betrayal!! We don't do that here.")
+                return False
+
+        case 'BL':
+            if (player == 0 and (col == 0 or row > 2)) or (player == 1 and (col == 4 or row < 2)):
+                print("Out of bound move.")
+                return False
+            prevType : str = board[row + 2 + (2 * adjustment)][col - 1 + adjustment].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
+            if prevType == pieceTeam:
+                print("Can't attack friendly piece. Betrayal!! We don't do that here.")
+                return False
+
+        case 'RB':
+            if (player == 0 and (col > 2 or row == 0)) or (player == 1 and (col < 2 or row == 4)):
+                print("Out of bound move")
+                return False
+            prevType : str = board[row + 1 - adjustment][col + 2 - (2 * adjustment)].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
+            if prevType == pieceTeam:
+                print("Can't attack friendly piece. Betrayal!! We don't do that here.")
+                return False
+
+        case 'BR':
+            if (player == 0 and (col == 4 or row > 2)) or (player == 1 and (col == 0 or row < 2)):
+                print("Out of bound move.")
+                return False
+            prevType : str = board[row - 2 + (2 * adjustment)][col + 1 - adjustment].split('-')[0]
+            pieceTeam : str = piece.split('-')[0]
+            if prevType == pieceTeam:
                 print("Can't attack friendly piece. Betrayal!! We don't do that here.")
                 return False
 

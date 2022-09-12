@@ -10,14 +10,14 @@ from .. import pieces
 
 def runGame():
 
-    player = 0
+    player : int = 0
     # 0 -> A, 1 -> B
 
     while len(pieces[0]) > 0 and len(pieces[1]) > 0:
         print('Turn for player',('A' if player == 0 else 'B'))
-        turn = typer.prompt("Enter a valid piece followed by a valid move like P1 L")
+        turn : str = typer.prompt("Enter a valid piece followed by a valid move like P1 L")
         turn = sanitizeMove(turn)
-        piece = (turn.split())[0]
+        piece : str = (turn.split())[0]
         if piece.upper() not in pieces[player]:
             print("Invalid move. Piece not present on the board.")
             continue

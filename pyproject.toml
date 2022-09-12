@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Chess"
-version = "0.2.0"
+version = "0.3.0"
 description = "This is a CLI based chess like game."
 authors = ["Aritra Dutta <aritra.dutta.366@gmail.com>"]
 readme = "README.md"

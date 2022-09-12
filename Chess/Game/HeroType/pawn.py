@@ -1,10 +1,10 @@
 from Chess.Game.validate import validatePawnMove
 from ... import board,pieces, positions
 
-def pawnMoves(turn, player):
+def pawnMoves(turn : str , player : int) -> bool:
     piece, move = turn.split()
     piece = ('A-' if player == 0 else 'B-') + piece
-    pos = positions[piece]
+    pos : list[int]= positions[piece]
     row, col = pos
     adjustment = 2 if player == 1 else 0
 

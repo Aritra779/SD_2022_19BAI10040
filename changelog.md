@@ -2,6 +2,22 @@
 
 # CHANGELOG
 
+## v0.3.0
+
+### Added
+
+* Piece Type - `H3`
+* Move Types - `LF`, `FL`, `FR`, `RF`, `LB`, `BL`, `RB`, `BR` for piece type `H3`
+* Type hinting added.
+
+### Changed
+
+* minute bug fixes here and there
+
+### Removed
+
+* Nothing :)
+
 ## v0.2.0
 
 ### Added

@@ -1,10 +1,10 @@
 from Chess.Game.validate import validateH1Move
 from ... import positions,pieces,board
 
-def hero1Moves(turn, player):
+def hero1Moves(turn : str, player : int) -> bool:
     piece, move = turn.split()
     piece = ('A-' if player == 0 else 'B-') + piece
-    pos = positions[piece]
+    pos : list[int] = positions[piece]
     row, col = pos
     adjustment = 2 if player == 1 else 0
 
